@@ -73,7 +73,7 @@ corpid = WeixinSetting.corpid
 corp_secret = WeixinSetting.secret
 ```
 
-**说明：redis配置请参考官方文档**
+**说明：redis配置请参考官方文档https://github.com/redis/redis-rb/blob/master/README.md**
 
 ## 实例对象
 
