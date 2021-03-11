@@ -6,8 +6,8 @@ require 'yol_qy_weixin/version'
 Gem::Specification.new do |spec|
   spec.name          = "yol_qy_weixin"
   spec.version       = YolQyWeixin::VERSION
-  spec.authors       = ["cjl"]
-  spec.email         = ["chenjialiang@yeezon.com"]
+  spec.authors       = ["luojie2019"]
+  spec.email         = ["luojie@yolanda.hk"]
   spec.summary       = %q{Shop middleware for Weixin.}
   spec.description   = ""
   spec.homepage      = ""

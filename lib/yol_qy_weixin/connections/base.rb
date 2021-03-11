@@ -18,26 +18,22 @@ module YolQyWeixin
       end
 
       def get_access_token
-        # access_token = redis.find("access_token_#{appid}")
-
-        # if access_token.nil?
-        #   access_token_res = get_token(corpid, secret)
-
-        #   # TODO:
-        #   access_token     = JSON.parse(access_token_res)["access_token"] rescue nil
-
-        #   if access_token.nil?
-        #     raise Exception.new("Weixin access token authorize false, appid: #{appid},
-        #                          appsecret: #{appsecret}, access_token_res: #{access_token_res.to_s}")
-        #   else
-        #     redis.save("access_token_#{appid}", access_token)
-        #     redis.expire("access_token_#{appid}", 7200)
-        #   end
-        # end
-
-        # access_token
-        access_token_res = get_token(corpid, secret)
-        access_token     = access_token_res["access_token"] rescue nil
+        if redis.nil?
+          access_token_res = get_token(corpid, secret)
+          access_token = access_token_res["access_token"] rescue nil
+        else
+          access_token = redis.get("qywx_access_token")
+          if access_token.nil?
+            access_token_res = get_token(corpid, secret)
+            access_token = access_token_res["access_token"] rescue nil
+            if access_token.nil?
+              raise Exception.new("QyWeixin access token authorize false, corpid: #{corpid}")
+            else
+              redis.set("qywx_access_token", access_token)
+              redis.expire("qywx_access_token", 7200)
+            end
+          end
+        end
         access_token
       end
 
