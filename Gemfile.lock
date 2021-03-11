@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    yol_qy_weixin (0.0.3)
+    yol_qy_weixin (0.0.4)
       multi_xml
       nokogiri
       roxml

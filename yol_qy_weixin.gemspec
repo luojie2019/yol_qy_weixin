@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["luojie@yolanda.hk"]
   spec.summary       = %q{Shop middleware for Weixin.}
   spec.description   = ""
-  spec.homepage      = ""
+  spec.homepage      = "https://github.com/luojie2019/yol_qy_weixin"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")
