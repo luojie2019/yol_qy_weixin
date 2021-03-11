@@ -53,6 +53,8 @@ production:
   secret: <%= ENV.fetch('QY_WEIXIN_SECRET') { '2**'' } %>
 ```
 
+**说明：考虑access_token需要缓存，redis配置请参考官方文档 https://github.com/redis/redis-rb/blob/master/README.md**
+
 ## 读取配置
 ```ruby
 # 读取qy_weixin.yml配置
@@ -73,20 +75,19 @@ corpid = WeixinSetting.corpid
 corp_secret = WeixinSetting.secret
 ```
 
-**说明：redis配置请参考官方文档https://github.com/redis/redis-rb/blob/master/README.md**
-
 ## 实例对象
 
 ```ruby
 # 目录 file: your_project/config/initializers/qy_weixin.rb
 
 QyWexinClient = YolQyWeixin::Client.new(
-	corpid: qy_weixin_config["corpid"],
-	secret: qy_weixin_config["secret"],
-	redis: RedisClient
+  corpid: qy_weixin_config["corpid"],
+  secret: qy_weixin_config["secret"],
+  redis: RedisClient
 )
 ```
 
+**说明：RedisClient为redis实例，如果没有配置可传nil，建议使用redis，考虑到access_token获取次数限制；**
 
 # 基本用法
 
@@ -94,51 +95,32 @@ QyWexinClient = YolQyWeixin::Client.new(
 
 ```ruby
 access_token = QyWexinClient.get_access_token
-# 对应企业微信官方文档：https://work.weixin.qq.com/api/doc/90000/90135/91039
+# 返回参考企业微信官方文档：https://work.weixin.qq.com/api/doc/90000/90135/91039
 ```
 
 ## 部门
 
 ```ruby
-group_client.department.create(name, parent_id, order=nil, id=nil)
-group_client.department.update(id, name, parent_id, order=nil)
-group_client.department.delete(id)
-group_client.department.list
+待补充，有需要可提issue到git：https://github.com/luojie2019/yol_qy_weixin.git
 ```
 
 ## 成员
 
 ```ruby
-# 创建成员
-group_client.user.create(user_id, name, options={})
+# 获取成员信息
+access_token = QyWexinClient.get_user_info(open_id)
+# 返回参考企业微信官方文档：https://open.work.weixin.qq.com/api/doc/90000/90135/90196
 
-# 更新成员
-group_client.user.update(user_id, options={})
-
-# 删除成员
-group_client.user.delete(user_id)
-
-# 批量删除成员
-group_client.user.batch_delete(user_ids)
-
-# 获取成员
-group_client.user.get(user_id)
-
-# 获取部门成员
-group_client.user.simple_list(department_id, fetch_child=nil, status=nil)
-
-# 获取部门成员(详情)
-group_client.user.full_list(department_id, fetch_child=nil, status=nil)
-
-# 邀请成员关注
-group_client.user.send_invitation(user_id, tips=nil)
-
-# userid转换成openid接口(企业支付需要使用到)
-group_client.covert_to_open_id(user_id, agent_id="")
-
-# openid转换成userid接口
-group_client.covert_to_user_id(open_id)
+# 获取反问用户信息
+access_token = QyWexinClient.get_user_id(code)
+# 返回参考企业微信官方文档：https://open.work.weixin.qq.com/api/doc/90000/90135/91707
 ```
+
+
+---
+
+
+后续功能实现还待优化，有需要可提issue到git：https://github.com/luojie2019/yol_qy_weixin.git
 
 ## 标签
 
