@@ -2,7 +2,7 @@ module YolQyWeixin
   module Connection
     module Department
       def department_list(department_id=0)
-        http_get(department_list_url(open_id))
+        http_get(department_list_url(department_id))
       end
 
 
