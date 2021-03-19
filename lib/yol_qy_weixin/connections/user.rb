@@ -1,6 +1,10 @@
 module YolQyWeixin
   module Connection
     module User
+      def get_users_by_department(department_id, fetch_child=0)
+        http_get(get_users_by_department_url(department_id, fetch_child))
+      end
+
       def get_user_id(code)
         http_get(user_info_url(open_id))
       end
@@ -10,6 +14,10 @@ module YolQyWeixin
       end
 
       private
+
+      def get_users_by_department_url(department_id, fetch_child)
+        "https://qyapi.weixin.qq.com/cgi-bin/user/simplelist?access_token=#{get_access_token}&department_id=#{department_id}&fetch_child=#{fetch_child}"
+      end
 
       def user_id_url(code)
         "https://qyapi.weixin.qq.com/cgi-bin/user/getuserinfo?access_token=#{get_access_token}&code=#{code}"
