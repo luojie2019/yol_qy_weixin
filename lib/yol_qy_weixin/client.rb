@@ -8,7 +8,8 @@ module YolQyWeixin
     include Connection::Qrcode
     include Connection::Template
     include Connection::User
-
+    include Connection::Department
+    
     attr_accessor :corpid, :secret, :redis
 
     def initialize(options = {})
