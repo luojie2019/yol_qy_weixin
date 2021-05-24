@@ -9,6 +9,7 @@ module YolQyWeixin
     include Connection::Template
     include Connection::User
     include Connection::Department
+    include Connection::Message
     
     attr_accessor :corpid, :secret, :redis
 
