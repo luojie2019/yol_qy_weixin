@@ -116,6 +116,12 @@ access_token = QyWexinClient.get_user_id(code)
 # 返回参考企业微信官方文档：https://open.work.weixin.qq.com/api/doc/90000/90135/91707
 ```
 
+## 发送信息
+
+```ruby
+# 获取成员信息
+access_token = QyWexinClient.send_message(body)
+# body内容可参考：https://work.weixin.qq.com/api/doc/90001/90143/90372#%E5%9B%BE%E6%96%87%E6%B6%88%E6%81%AF
 
 ---
 

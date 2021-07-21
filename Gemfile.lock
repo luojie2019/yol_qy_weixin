@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    yol_qy_weixin (0.0.7)
+    yol_qy_weixin (0.0.8)
       multi_xml
       nokogiri
       roxml
@@ -16,11 +16,11 @@ GEM
       tzinfo (~> 1.1)
       zeitwerk (~> 2.2, >= 2.2.2)
     concurrent-ruby (1.1.8)
-    i18n (1.8.9)
+    i18n (1.8.10)
       concurrent-ruby (~> 1.0)
     minitest (5.14.4)
     multi_xml (0.6.0)
-    nokogiri (1.11.2-x86_64-darwin)
+    nokogiri (1.11.3-x86_64-darwin)
       racc (~> 1.4)
     racc (1.5.2)
     rake (13.0.1)

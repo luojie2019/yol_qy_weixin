@@ -8,7 +8,7 @@ module YolQyWeixin
       private
 
       def send_url
-        "https://qyapi.weixin.qq.com/cgi-bin/message/send?access_token=#{get_access_token}&debug=1"
+        "https://qyapi.weixin.qq.com/cgi-bin/message/send?access_token=#{get_access_token}"
       end
     end
   end
